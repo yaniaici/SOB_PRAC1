@@ -15,13 +15,14 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @Entity
 public class Videogame implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id
-    @SequenceGenerator(name="VideoGame_Gen", allocationSize=1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VideoGame_Gen") 
+    @SequenceGenerator(name = "VIDEOGAME_GEN", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VIDEOGAME_GEN")
     private Long id;
-    
+
     private String gameName;
     private String console;
     private boolean availability;
@@ -31,14 +32,13 @@ public class Videogame implements Serializable {
     private String storeAddress;
 
     // Constructors, getters, setters, etc.
-
     // Constructors
     public Videogame() {
         // Default constructor required by JPA
     }
 
     public Videogame(String gameName, String console, boolean availability,
-                     double weeklyRentalPrice, String description, String gameType, String storeAddress) {
+            double weeklyRentalPrice, String description, String gameType, String storeAddress) {
         this.gameName = gameName;
         this.console = console;
         this.availability = availability;
@@ -49,7 +49,6 @@ public class Videogame implements Serializable {
     }
 
     // Getters and setters
-
     public Long getId() {
         return id;
     }
@@ -132,7 +131,16 @@ public class Videogame implements Serializable {
 
     @Override
     public String toString() {
-        return "model.entities.VideoGame[ id=" + id + " ]";
+        return "Videogame{" +
+                "id=" + id +
+                ", gameName='" + gameName + '\'' +
+                ", console='" + console + '\'' +
+                ", availability=" + availability +
+                ", weeklyRentalPrice=" + weeklyRentalPrice +
+                ", description='" + description + '\'' +
+                ", gameType='" + gameType + '\'' +
+                ", storeAddress='" + storeAddress + '\'' +
+                '}';
     }
+    
 }
-

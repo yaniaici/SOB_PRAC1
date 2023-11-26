@@ -28,7 +28,6 @@ import model.entities.Videogame;
 public class VideogameFacadeREST extends AbstractFacade<Videogame> {
 
     @PersistenceContext(unitName = "Homework1PU")
-    
     private EntityManager em;
     
     public VideogameFacadeREST() {
@@ -73,6 +72,9 @@ public class VideogameFacadeREST extends AbstractFacade<Videogame> {
     public Response createVideogame(Videogame videogame) {
         try {
             // Si no existe, crear el videojuego
+            System.out.println("HOLA ME EJECUTO");
+            System.out.println(videogame.toString());
+
             super.create(videogame);
 
             // Devolver el código HTTP 201 Created
@@ -84,7 +86,7 @@ public class VideogameFacadeREST extends AbstractFacade<Videogame> {
 
     @Override
     protected EntityManager getEntityManager() {
-        return this.em;
+        return em;
     }
 
 }
