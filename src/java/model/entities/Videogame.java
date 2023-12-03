@@ -6,6 +6,7 @@ package model.entities;
 
 import java.io.Serializable;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -22,9 +23,9 @@ public class Videogame implements Serializable {
     @SequenceGenerator(name = "VIDEOGAME_GEN", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VIDEOGAME_GEN")
     private Long id;
-
     private String gameName;
-    private String console;
+    @Enumerated
+    private Console console;
     private boolean availability;
     private double weeklyRentalPrice;
     private String description;
@@ -37,7 +38,7 @@ public class Videogame implements Serializable {
         // Default constructor required by JPA
     }
 
-    public Videogame(String gameName, String console, boolean availability,
+    public Videogame(String gameName, Console console, boolean availability,
             double weeklyRentalPrice, String description, String gameType, String storeAddress) {
         this.gameName = gameName;
         this.console = console;
@@ -65,11 +66,11 @@ public class Videogame implements Serializable {
         this.gameName = gameName;
     }
 
-    public String getConsole() {
+    public Console getConsole() {
         return console;
     }
 
-    public void setConsole(String console) {
+    public void setConsole(Console console) {
         this.console = console;
     }
 

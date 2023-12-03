@@ -9,8 +9,10 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -18,7 +20,8 @@ import jakarta.ws.rs.core.Response;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import model.entities.Rental;
+import java.util.NoSuchElementException;
+import model.entities.Customer;
 import model.entities.Rental;
 import model.entities.RentalRequestDTO;
 import model.entities.Videogame;
@@ -42,10 +45,29 @@ public class RentalFacadeREST extends AbstractFacade<Rental> {
     public Response rentVideogames(RentalRequestDTO rentalRequest) {
         try {
             // Lógica para procesar el lloguer y obtener la respuesta
+            System.out.println(rentalRequest.toString());
             Rental response = processRental(rentalRequest);
+            super.create(response);
  
             // Retorna la respuesta con el código 201 Created
             return Response.status(Response.Status.CREATED).entity(response).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.BAD_REQUEST).entity("Error en la solicitud de lloguer").build();
+        }
+    }
+    
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getRentalById(@PathParam("id") Long id) {
+        try {
+            Rental rental = em.find(Rental.class, id);
+
+            if (rental != null) {
+                return Response.ok(rental).build();
+            } else {
+                return Response.status(Response.Status.NOT_FOUND).entity("Rental not found").build();
+            }
         } catch (Exception e) {
             return Response.status(Response.Status.BAD_REQUEST).entity("Error en la solicitud de lloguer").build();
         }
@@ -83,8 +105,26 @@ public class RentalFacadeREST extends AbstractFacade<Rental> {
         calendar.add(Calendar.WEEK_OF_YEAR, numberOfWeeks);
         Date rDate = calendar.getTime();
         rental.setReturnDate(rDate);
+        
+        if (em.find(Customer.class, rentalRequest.getCustomerDNI()) == null) {
+            throw new NoSuchElementException("Customer no encontrado");
+        }
+
+        if (checkRentalFromCustomer(rental.getCustomer().getDni())) {
+            throw new Exception("Ya dispones de un alquiler!!!");
+        }
+        rental.setCustomer(em.find(Customer.class, rentalRequest.getCustomerDNI()));
 
         return rental;
+    }
+    
+        private boolean checkRentalFromCustomer(String dni) {
+        List<Rental> rentals = super.findAll();
+        for(Rental r : rentals){
+            if(r.getCustomer().getDni().equals(dni))
+                return true;
+        }
+        return false;
     }
         
     @Override

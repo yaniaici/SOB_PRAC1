@@ -9,8 +9,20 @@ import java.util.List;
 
 public class RentalRequestDTO {
     
+    
     private List<Long> videogames;
+
     private int numberOfWeeks;
+    
+    private String customerDNI;
+
+    public String getCustomerDNI() {
+        return customerDNI;
+    }
+
+    public void setCustomerDNI(String customerDNI) {
+        this.customerDNI = customerDNI;
+    }
 
     public int getNumberOfWeeks() {
         return numberOfWeeks;
@@ -26,6 +38,11 @@ public class RentalRequestDTO {
 
     public void setVideogames(List<Long> videogames) {
         this.videogames = videogames;
+    }
+    
+    @Override
+    public String toString() {
+        return "RentalRequestDTO{" + "videogames=" + videogames + ", numberOfWeeks=" + numberOfWeeks + '}';
     }
 
     

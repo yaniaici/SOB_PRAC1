@@ -1,13 +1,14 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
-*/
+ */
 package model.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
@@ -27,9 +28,11 @@ public class Rental implements Serializable {
     private double totalPrice;
     private Date returnDate;
     private List<Videogame> videogames;
-    
+    @OneToOne
+    private Customer customer;
+
     public Rental() {
-        
+
     }
 
     public Rental(Long id, double totalPrice, Date returnDate, List<Videogame> videogames) {
@@ -70,11 +73,18 @@ public class Rental implements Serializable {
     public void setVideogames(List<Videogame> videogames) {
         this.videogames = videogames;
     }
-    
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
     @Override
     public String toString() {
         return "Rental{" + "id=" + id + ", totalPrice=" + totalPrice + ", returnDate=" + returnDate + ", videogames=" + videogames + '}';
     }
 
 }
- 

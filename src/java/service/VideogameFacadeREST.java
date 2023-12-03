@@ -4,6 +4,7 @@
  */
 package service;
 
+import authn.Secured;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -42,7 +43,7 @@ public class VideogameFacadeREST extends AbstractFacade<Videogame> {
     ) {
         try {
             List<Videogame> videoGames;
-
+            
             if (type == null) {
                 if (console == null) {
                     if (type != null && console != null) {
@@ -67,14 +68,12 @@ public class VideogameFacadeREST extends AbstractFacade<Videogame> {
     }
     
     @POST
+    @Secured
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Produces(MediaType.APPLICATION_JSON)
     public Response createVideogame(Videogame videogame) {
         try {
             // Si no existe, crear el videojuego
-            System.out.println("HOLA ME EJECUTO");
-            System.out.println(videogame.toString());
-
             super.create(videogame);
 
             // Devolver el código HTTP 201 Created
