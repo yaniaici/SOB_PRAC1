@@ -63,23 +63,27 @@
             Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/" + dbname, "root", "root");
             Statement stmt = con.createStatement();
             
-            /* creating sequences */
-            String sequences[] = new String[]{
-                "CREATE SEQUENCE " + schema + ".VIDEOGAME_GEN START WITH 1 INCREMENT BY 1",
-                "CREATE SEQUENCE " + schema + ".RENTAL_GEN START WITH 1 INCREMENT BY 1"
-            };
-            for (String sequence : sequences) {
-                if (stmt.executeUpdate(sequence) <= 0) {
-                    out.println("<span class='error'>Error creating sequence: " + sequence + "</span>");
-                    return;
-                }
-                out.println("<pre> -> " + sequence + "<pre>");
-            }
-            
             /* inserting data */
             String data[] = new String[]{
-                "INSERT INTO " + schema + ".CREDENTIALS VALUES (NEXT VALUE FOR CREDENTIALS_GEN, 'sob', 'sob')"
-            };
+                "INSERT INTO " + schema + ".VIDEOGAME (id, gameName, console, availability, weeklyRentalPrice, description, gameType, storeAddress) VALUES (NEXT VALUE FOR VIDEOGAME_GEN, 'Assassins Creed Valhalla', 1, 1, 49.99, 'Explore the Viking Age', 'Action-Adventure', 'Store 8')",
+                "INSERT INTO " + schema + ".VIDEOGAME (id, gameName, console, availability, weeklyRentalPrice, description, gameType, storeAddress) VALUES (NEXT VALUE FOR VIDEOGAME_GEN, 'Cyberpunk 2077', 3, 0, 59.99, 'Open-world RPG in Night City', 'Role-Playing', 'Store 9')",
+                "INSERT INTO " + schema + ".VIDEOGAME (id, gameName, console, availability, weeklyRentalPrice, description, gameType, storeAddress) VALUES (NEXT VALUE FOR VIDEOGAME_GEN, 'FIFA 22', 4, 1, 39.99, 'Football simulation game', 'Sports', 'Store 10')",
+                "INSERT INTO " + schema + ".VIDEOGAME (id, gameName, console, availability, weeklyRentalPrice, description, gameType, storeAddress) VALUES (NEXT VALUE FOR VIDEOGAME_GEN, 'The Legend of Zelda: Breath of the Wild', 5, 1, 54.99, 'Explore Hyrule', 'Action-Adventure', 'Store 11')",
+                "INSERT INTO " + schema + ".VIDEOGAME (id, gameName, console, availability, weeklyRentalPrice, description, gameType, storeAddress) VALUES (NEXT VALUE FOR VIDEOGAME_GEN, 'The Sims 4', 1, 0, 29.99, 'Life simulation game', 'Simulation', 'Store 12')",
+                "INSERT INTO " + schema + ".VIDEOGAME (id, gameName, console, availability, weeklyRentalPrice, description, gameType, storeAddress) VALUES (NEXT VALUE FOR VIDEOGAME_GEN, 'Call of Duty: Warzone', 2, 1, 0.0, 'Free-to-play battle royale', 'Shooter', 'Store 13')",
+                "INSERT INTO " + schema + ".VIDEOGAME (id, gameName, console, availability, weeklyRentalPrice, description, gameType, storeAddress) VALUES (NEXT VALUE FOR VIDEOGAME_GEN, 'Halo Infinite', 3, 0, 69.99, 'Next installment in the Halo series', 'Shooter', 'Store 14')",
+                "INSERT INTO " + schema + ".VIDEOGAME (id, gameName, console, availability, weeklyRentalPrice, description, gameType, storeAddress) VALUES (NEXT VALUE FOR VIDEOGAME_GEN, 'Animal Crossing: New Horizons', 4, 1, 44.99, 'Create your own paradise', 'Simulation', 'Store 15')",
+                "INSERT INTO " + schema + ".VIDEOGAME (id, gameName, console, availability, weeklyRentalPrice, description, gameType, storeAddress) VALUES (NEXT VALUE FOR VIDEOGAME_GEN, 'World of Warcraft', 2, 1, 12.99, 'Explore Azeroth', 'MMORPG', 'Store 16')",
+                "INSERT INTO " + schema + ".VIDEOGAME (id, gameName, console, availability, weeklyRentalPrice, description, gameType, storeAddress) VALUES (NEXT VALUE FOR VIDEOGAME_GEN, 'Spider-Man: Miles Morales', 1, 0, 49.99, 'Superhero action-adventure', 'Action', 'Store 17')",
+                "INSERT INTO " + schema + ".VIDEOGAME (id, gameName, console, availability, weeklyRentalPrice, description, gameType, storeAddress) VALUES (NEXT VALUE FOR VIDEOGAME_GEN, 'Minecraft', 3, 1, 29.99, 'Build and explore block worlds', 'Adventure', 'Store 18')",
+                "INSERT INTO " + schema + ".VIDEOGAME (id, gameName, console, availability, weeklyRentalPrice, description, gameType, storeAddress) VALUES (NEXT VALUE FOR VIDEOGAME_GEN, 'The Witcher 3: Wild Hunt', 4, 1, 39.99, 'Epic fantasy RPG', 'Role-Playing', 'Store 19')",
+                "INSERT INTO " + schema + ".VIDEOGAME (id, gameName, console, availability, weeklyRentalPrice, description, gameType, storeAddress) VALUES (NEXT VALUE FOR VIDEOGAME_GEN, 'God of War', 3, 0, 54.99, 'Action-adventure with Kratos', 'Action', 'Store 20')",
+                "INSERT INTO " + schema + ".CUSTOMER (dni, name, address, password, phoneNumber) VALUES ('12345678A', 'John Doe', '123 Main St', 'pass123', '555-1234')",
+                "INSERT INTO " + schema + ".CUSTOMER (dni, name, address, password, phoneNumber) VALUES ('98765432B', 'Jane Smith', '456 Oak St', 'pass456', '555-5678')",
+                "INSERT INTO " + schema + ".CUSTOMER (dni, name, address, password, phoneNumber) VALUES ('56789012C', 'Bob Johnson', '789 Pine St', 'pass789', '555-9012')",
+                "INSERT INTO " + schema + ".CUSTOMER (dni, name, address, password, phoneNumber) VALUES ('34567890D', 'Alice Brown', '234 Cedar St', 'pass234', '555-3456')",
+                "INSERT INTO " + schema + ".CUSTOMER (dni, name, address, password, phoneNumber) VALUES ('01234567E', 'Charlie White', '789 Elm St', 'pass789', '555-6789')"
+            };        
             for (String datum : data) {
                 if (stmt.executeUpdate(datum) <= 0) {
                     out.println("<span class='error'>Error inserting data: " + datum + "</span>");

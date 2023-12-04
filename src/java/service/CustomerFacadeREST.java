@@ -26,20 +26,16 @@ import model.entities.CustomerDTO;
  * @author Yani Aici
  */
 @Stateless
-@Path("/customers")
+@Path("/rest/api/v1/customers")
 public class CustomerFacadeREST extends AbstractFacade<Customer> {
     
     @PersistenceContext(unitName = "Homework1PU")
     protected EntityManager em;
 
-    public CustomerFacadeREST(Class<Customer> entityClass) {
+    public CustomerFacadeREST() {
         super(Customer.class);
     }
     
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -114,6 +110,11 @@ public class CustomerFacadeREST extends AbstractFacade<Customer> {
         dto.setName(customer.getName());
         dto.setPhoneNumber(customer.getPhoneNumber());
         return dto;
+    }
+        
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
     }
     
     

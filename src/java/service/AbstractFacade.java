@@ -13,6 +13,7 @@ import model.entities.Videogame;
 /**
  *
  * @author deim
+ * @param <T>
  */
 public abstract class AbstractFacade<T> {
 
