@@ -82,7 +82,8 @@
                 "INSERT INTO " + schema + ".CUSTOMER (dni, name, address, password, phoneNumber) VALUES ('98765432B', 'Jane Smith', '456 Oak St', 'pass456', '555-5678')",
                 "INSERT INTO " + schema + ".CUSTOMER (dni, name, address, password, phoneNumber) VALUES ('56789012C', 'Bob Johnson', '789 Pine St', 'pass789', '555-9012')",
                 "INSERT INTO " + schema + ".CUSTOMER (dni, name, address, password, phoneNumber) VALUES ('34567890D', 'Alice Brown', '234 Cedar St', 'pass234', '555-3456')",
-                "INSERT INTO " + schema + ".CUSTOMER (dni, name, address, password, phoneNumber) VALUES ('01234567E', 'Charlie White', '789 Elm St', 'pass789', '555-6789')"
+                "INSERT INTO " + schema + ".CUSTOMER (dni, name, address, password, phoneNumber) VALUES ('01234567E', 'Charlie White', '789 Elm St', 'pass789', '555-6789')",
+                "INSERT INTO " + schema + ".CREDENTIALS (id, username, password) VALUES (NEXT VALUE FOR CREDENTIALS_GEN, 'sob', 'sob')"
             };        
             for (String datum : data) {
                 if (stmt.executeUpdate(datum) <= 0) {

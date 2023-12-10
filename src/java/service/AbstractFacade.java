@@ -8,6 +8,7 @@ package service;
 import java.util.List;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
+import model.entities.Console;
 import model.entities.Videogame;
 
 /**
@@ -65,19 +66,19 @@ public abstract class AbstractFacade<T> {
     }
 
     public List<Videogame> findVideogamesByType(String type) {
-        Query query = getEntityManager().createQuery("SELECT v FROM Videogame v WHERE v.type = :type");
+        Query query = getEntityManager().createQuery("SELECT v FROM Videogame v WHERE v.gameType = :type");
         query.setParameter("type", type);
         return query.getResultList();
     }
 
-    public List<Videogame> findVideogamesByConsole(String console) {
+    public List<Videogame> findVideogamesByConsole(Console console) {
         Query query = getEntityManager().createQuery("SELECT v FROM Videogame v WHERE v.console = :console");
         query.setParameter("console", console);
         return query.getResultList();
     }
 
-    public List<Videogame> findVideogamesByTypeAndConsole(String type, String console) {
-        Query query = getEntityManager().createQuery("SELECT v FROM Videogame v WHERE v.type = :type AND v.console = :console");
+    public List<Videogame> findVideogamesByTypeAndConsole(String type, Console console) {
+        Query query = getEntityManager().createQuery("SELECT v FROM Videogame v WHERE v.gameType = :type AND v.console = :console");
         query.setParameter("type", type);
         query.setParameter("console", console);
         return query.getResultList();

@@ -52,6 +52,7 @@ public class RentalFacadeREST extends AbstractFacade<Rental> {
             // Retorna la respuesta con el código 201 Created
             return Response.status(Response.Status.CREATED).entity(response).build();
         } catch (Exception e) {
+            e.printStackTrace();
             return Response.status(Response.Status.BAD_REQUEST).entity("Error en la solicitud de lloguer").build();
         }
     }
@@ -110,7 +111,7 @@ public class RentalFacadeREST extends AbstractFacade<Rental> {
             throw new NoSuchElementException("Customer no encontrado");
         }
 
-        if (checkRentalFromCustomer(rental.getCustomer().getDni())) {
+        if (checkRentalFromCustomer(rentalRequest.getCustomerDNI())) {
             throw new Exception("Ya dispones de un alquiler!!!");
         }
         rental.setCustomer(em.find(Customer.class, rentalRequest.getCustomerDNI()));

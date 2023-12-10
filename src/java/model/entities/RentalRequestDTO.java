@@ -8,6 +8,11 @@ import java.util.List;
 
 
 public class RentalRequestDTO {
+
+    @Override
+    public String toString() {
+        return "RentalRequestDTO{" + "videogames=" + videogames + ", numberOfWeeks=" + numberOfWeeks + ", customerDNI=" + customerDNI + '}';
+    }
     
     
     private List<Long> videogames;
@@ -40,10 +45,7 @@ public class RentalRequestDTO {
         this.videogames = videogames;
     }
     
-    @Override
-    public String toString() {
-        return "RentalRequestDTO{" + "videogames=" + videogames + ", numberOfWeeks=" + numberOfWeeks + '}';
-    }
+    
 
     
 }

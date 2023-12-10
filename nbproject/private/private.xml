@@ -3,23 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuario/OneDrive/Escritorio/SOB/PRAC1/web/install.jsp</file>
-            <file>file:/C:/Users/Usuario/OneDrive/Escritorio/SOB/PRAC1/src/java/authn/RESTRequestFilter.java</file>
-            <file>file:/C:/Users/Usuario/OneDrive/Escritorio/SOB/PRAC1/src/java/model/entities/Console.java</file>
-            <file>file:/C:/Users/Usuario/OneDrive/Escritorio/SOB/PRAC1/src/java/service/RESTapp.java</file>
-            <file>file:/C:/Users/Usuario/OneDrive/Escritorio/SOB/PRAC1/src/java/model/entities/CustomerDTO.java</file>
-            <file>file:/C:/Users/Usuario/OneDrive/Escritorio/SOB/PRAC1/src/java/service/VideogameFacadeREST.java</file>
             <file>file:/C:/Users/Usuario/OneDrive/Escritorio/SOB/PRAC1/src/java/model/entities/RentalRequestDTO.java</file>
+            <file>file:/C:/Users/Usuario/OneDrive/Escritorio/SOB/PRAC1/web/install.jsp</file>
             <file>file:/C:/Users/Usuario/OneDrive/Escritorio/SOB/PRAC1/src/java/model/entities/Rental.java</file>
             <file>file:/C:/Users/Usuario/OneDrive/Escritorio/SOB/PRAC1/src/java/model/entities/Customer.java</file>
-            <file>file:/C:/Users/Usuario/OneDrive/Escritorio/SOB/PRAC1/src/java/authn/Secured.java</file>
-            <file>file:/C:/Users/Usuario/OneDrive/Escritorio/SOB/PRAC1/src/java/service/AbstractFacade.java</file>
             <file>file:/C:/Users/Usuario/OneDrive/Escritorio/SOB/PRAC1/src/java/service/CustomerFacadeREST.java</file>
+            <file>file:/C:/Users/Usuario/OneDrive/Escritorio/SOB/PRAC1/src/java/service/AbstractFacade.java</file>
             <file>file:/C:/Users/Usuario/OneDrive/Escritorio/SOB/PRAC1/src/java/model/entities/Videogame.java</file>
-            <file>file:/C:/Users/Usuario/OneDrive/Escritorio/SOB/PRAC1/web/WEB-INF/glassfish-resources.xml</file>
-            <file>file:/C:/Users/Usuario/OneDrive/Escritorio/SOB/PRAC1/src/java/service/RentalFacadeREST.java</file>
-            <file>file:/C:/Users/Usuario/OneDrive/Escritorio/SOB/PRAC1/src/conf/persistence.xml</file>
-            <file>file:/C:/Users/Usuario/OneDrive/Escritorio/SOB/PRAC1/src/java/authn/Credentials.java</file>
+            <file>file:/C:/Users/Usuario/OneDrive/Escritorio/SOB/PRAC1/src/java/model/entities/CustomerDTO.java</file>
+            <file>file:/C:/Users/Usuario/OneDrive/Escritorio/SOB/PRAC1/src/java/service/VideogameFacadeREST.java</file>
         </group>
     </open-files>
 </project-private>

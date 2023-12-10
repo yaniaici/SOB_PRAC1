@@ -17,6 +17,7 @@ import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.util.List;
+import model.entities.Console;
 import model.entities.Videogame;
 
 /**
@@ -41,31 +42,29 @@ public class VideogameFacadeREST extends AbstractFacade<Videogame> {
             @QueryParam("type") String type,
             @QueryParam("console") String console
     ) {
+        Console consoleEnum;
         try {
+            consoleEnum = Console.valueOf(console);
             List<Videogame> videoGames;
-            
-            if (type == null) {
-                if (console == null) {
-                    if (type != null && console != null) {
-                        videoGames = super.findVideogamesByTypeAndConsole(type, console);
-                    } else if (type != null) {
-                        videoGames = super.findVideogamesByType(type);
-                    } else if (console != null) {
-                        videoGames = super.findVideogamesByConsole(console);
-                    } else {
-                        videoGames = super.findAll();
-                    }
 
-                    return Response.ok(videoGames).build();
-                }
+            if (type != null && console != null) {
+                videoGames = super.findVideogamesByTypeAndConsole(type, consoleEnum);
+            } else if (type != null) {
+                videoGames = super.findVideogamesByType(type);
+            } else if (console != null) {
+                videoGames = super.findVideogamesByConsole(consoleEnum);
+            } else {
+                videoGames = super.findAll();
             }
 
-            return Response.status(Response.Status.BAD_REQUEST).entity("Parámetro incorrecto.").build();
+            return Response.ok(videoGames).build();
 
         } catch (Exception e) {
+            e.printStackTrace();
             return Response.status(Response.Status.BAD_REQUEST).entity("Error en la solicitud").build();
         }
     }
+
     
     @POST
     @Secured
